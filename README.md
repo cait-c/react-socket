@@ -10,6 +10,12 @@ See how socket.io implements with React and is used in components
 
 We will broadcast to all clients listening when an api endpoint is hit
 
+## Test it out
+
+To test out if the application is truly emitting to every client listening when the post endpoint is hit
+open up multiple windows. You will see in each of them if you hit the endpoint that they all log in the request of 
+the body in the browser console. But if you click the button on the screen you will see that only the client that clicked
+the button will recieve a response.
 
 ### Getting Started with Create React App
 
