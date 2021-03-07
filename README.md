@@ -1,4 +1,15 @@
-# Getting Started with Create React App
+# Socket.io, Express, Node, React
+
+npm install Socket.io, Express, cors, body-parser
+
+Create a simple React app with an api and a websocket server
+
+See how socket.io implements with React and is used in components
+
+
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
