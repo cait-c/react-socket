@@ -1,6 +1,6 @@
 # Socket.io, Express, Node, React
 
-npm install Socket.io, Express, cors, body-parser
+npm install socket.io, socket.io-client, express, cors, body-parser
 
 Create a simple React app with an api and a websocket server
 
