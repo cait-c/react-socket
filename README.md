@@ -6,14 +6,16 @@ Create a simple React app with an api and a websocket server
 
 See how socket.io implements with React and is used in components
 
+## Socket.io 
+
+We will broadcast to all clients listening when an api endpoint is hit
 
 
-
-## Getting Started with Create React App
+### Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Available Scripts
 
 In the project directory, you can run:
 
