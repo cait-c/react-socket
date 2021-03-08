@@ -5,17 +5,15 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
-app.unsubscribe(cors());
+app.use(cors());
 
 app.get('/backend', (req,res) => {
-    res.send({data: 'Express backend is connected to React!'})
+    res.send({message: 'Express backend is connected to React!'})
 });
 
 app.post('/post_test', (req,res) => {
     console.log(req.body, 'body of request')
-    if(req.status == 200){
-        res.send('post test successful')
-    }
+    res.send('post test successful')
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
@@ -26,7 +24,7 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 const httpServer = require('http').createServer();
 const io = require('socket.io')(httpServer, {
     cors: {
-        origin: 'localhost:3000',
+        origin: 'http://localhost:3000',
         methods: ['GET', 'POST'],
         credentials: true
     }
@@ -38,7 +36,7 @@ io.on('connection', (socket) => {
     socket.on('hello world', (arg, arg2) => {
         console.log(arg)
         console.log(arg2)
-        socket.emit('responding to hello world')
+        socket.emit('hello world response')
     })
 });
 

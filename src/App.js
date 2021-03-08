@@ -4,26 +4,30 @@ import {io} from 'socket.io-client';
 
 
 class App extends Component{
+  constructor(props) {
+    super(props);
+    this.callBackend = this.callBackend.bind(this);
+  }
 
   state = {
     data: null
   }
   
-  socket = io('ws//localhost:3001',
+  socket = io('ws://localhost:3001',
     {
       reconnectionDelay: 1000,
       reconnection: true,
       reconnectionAttempts: 10,
-      transport: ['websocket'],
+      transports: ['websocket'],
       withCredentials: true
   })
 
   componentDidMount() {
     this.callBackend()
-      .then(res => this.setState({data: res.data}))
+      .then(res => this.setState({data: res.message}))
       .catch(err => console.log(err))
 
-    this.socket.io('connection', (arg) => {
+    this.socket.on('connection', (arg) => {
       console.log(arg) // hello client connection
     })
 
@@ -38,11 +42,16 @@ class App extends Component{
   }
 
   socketSend = () => {
-    this.socket.emit('hello world', 'hello world arg', 'hello world arg2')
+    this.socket.emit('hello world', 'hello world ws server', 'another argument')
   }
 
-  callBackend = () => {
-    const response = await fetch('/backend');
+  callBackend = async () => {
+    const response = await fetch('http://localhost:8080/backend', {
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    });
     const body = await response.json();
 
     if(response.state !== 200){
